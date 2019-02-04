@@ -1,23 +1,14 @@
 import React from 'react';
 import './App.css';
-import Users from './components/Users';
-import Messages from './components/Messages';
-import AddMessage from './components/AddMessage';
-
-const users = ['Jack', 'Jill', 'James', 'John', 'Jane'];
-const messages = [{
-  text: 'Hi!',
-  author: 'Jack'
-}, {
-  text: 'Hello!',
-  author: 'Jill'
-}];
+import { Users } from './containers/Users';
+import { Messages } from './containers/Messages';
+import { AddMessage } from './containers/AddMessage';
 
 const App = () => (
   <div id="chat">
-    <Users users={users} />
+    <Users />
     <section id="main">
-      <Messages messages={messages} />
+      <Messages />
       <AddMessage />
     </section>
   </div>
