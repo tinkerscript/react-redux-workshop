@@ -1,4 +1,5 @@
 import React from 'react';
+import { Field } from 'redux-form';
 
 export default class AddMessage extends React.Component {
   constructor(props) {
@@ -7,19 +8,22 @@ export default class AddMessage extends React.Component {
   }
 
   onKeyPress = e => {
-    const { addMessage } = this.props;
-
     if (e.key === 'Enter') {
-      addMessage(this.input.current.value, 'Me')
-      this.input.current.value = '';
+      this.props.handleSubmit();
+      this.props.reset();
+      e.preventDefault();
     };
   }
 
   render() {
+    const { handleSubmit } = this.props;
+
     return (
-      <section id="new-message">
-        <input type="text" ref={this.input} onKeyPress={this.onKeyPress} />
-      </section>
+      <form onSubmit={handleSubmit}>
+        <section id="new-message">
+          <Field name="text" component="input" type="text" ref={this.input} onKeyPress={this.onKeyPress} />
+        </section>
+      </form>
     );
   }
 }

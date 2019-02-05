@@ -4,7 +4,7 @@ import {
   MESSAGE_RECEIVED,
 } from '../constants';
 
-export const addMessage = (text, author) => ({
+export const addMessage = ({ text, author }) => ({
   type: ADD_MESSAGE,
   text,
   author

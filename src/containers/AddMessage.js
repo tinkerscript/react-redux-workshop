@@ -1,10 +1,19 @@
-import { connect } from 'react-redux'
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form';
 import AddMessageComponent from '../components/AddMessage'
 import { addMessage } from '../actions'
 
-const mapStateToProps = () => ({});
+const mapStateToProps = () => ({
+  initialValues: {
+    author: 'Me'
+  }
+});
 const mapDispatchToProps = {
-  addMessage,
+  onSubmit: addMessage
 };
 
-export const AddMessage = connect(mapStateToProps, mapDispatchToProps)(AddMessageComponent)
+export const AddMessage = compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  reduxForm({ form: 'addMessage' }),
+)(AddMessageComponent);
